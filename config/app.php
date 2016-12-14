@@ -172,11 +172,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Trellis\Criteria\Providers\AppServiceProvider::class,
+        // Trellis\Criteria\Providers\BroadcastServiceProvider::class,
+        Trellis\Criteria\Providers\AuthServiceProvider::class,
+        Trellis\Criteria\Providers\EventServiceProvider::class,
+        Trellis\Criteria\Providers\RouteServiceProvider::class,
 
     ],
 

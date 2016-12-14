@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Http\Jobs;
+namespace Trellis\Criteria\Domains\Http\Jobs;
 
 use Illuminate\Routing\ResponseFactory;
 

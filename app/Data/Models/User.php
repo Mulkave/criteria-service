@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Data\Models;
+namespace Trellis\Criteria\Data\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/criteria/facebook', 'FacebookController@all');
+Route::get('/criteria/facebook/genders', 'FacebookController@genders');
+Route::get('/criteria/facebook/regions', 'FacebookController@regions');
+Route::get('/criteria/facebook/countries', 'FacebookController@countries');
+Route::get('/criteria/facebook/interests', 'FacebookController@interests');
+Route::get('/criteria/facebook/age-groups', 'FacebookController@ageGroups');
