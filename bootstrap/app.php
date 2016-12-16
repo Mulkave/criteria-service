@@ -41,6 +41,13 @@ $app->singleton(
     Trellis\Criteria\Exceptions\Handler::class
 );
 
+$app->configureMonologUsing(function($monolog) use ($app) {
+    $factory = $app->make(Trellis\ErrorReporting\Factory::class);
+    $monolog->pushHandler($factory->slack());
+    $monolog->pushHandler($factory->cloudWatch());
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

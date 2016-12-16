@@ -7,7 +7,8 @@
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
-        "lucid-arch/laravel-foundation": "5.3.*"
+        "lucid-arch/laravel-foundation": "5.3.*",
+        "trellis/error-reporting": "^0.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -17,6 +18,12 @@
         "symfony/dom-crawler": "3.1.*",
         "lucid-arch/laravel-console": "dev-dev"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:Trelllis/error-reporting.git"
+        }
+    ],
     "autoload": {
         "classmap": [
             "database"

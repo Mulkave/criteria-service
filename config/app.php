@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'My Application',
+    'name' => 'Trellis Criteria Service',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +178,7 @@ return [
         Trellis\Criteria\Providers\EventServiceProvider::class,
         Trellis\Criteria\Providers\RouteServiceProvider::class,
 
+        Trellis\ErrorReporting\ErrorReportingServiceProvider::class,
     ],
 
     /*
