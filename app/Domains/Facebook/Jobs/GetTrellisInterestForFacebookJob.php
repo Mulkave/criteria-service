@@ -28,10 +28,14 @@ class GetTrellisInterestForFacebookJob extends Job
             $finalInterests[$interest['title']] = $interest['id'];
         }
 
-        $result = null;
+        $result = [
+            'value' => null,
+        ];
 
         if (array_key_exists($this->interest, $finalInterests)) {
-            $result = $finalInterests[$this->interest];
+            $result = [
+                'value' => $finalInterests[$this->interest]
+            ];
         }
 
         return $result;
