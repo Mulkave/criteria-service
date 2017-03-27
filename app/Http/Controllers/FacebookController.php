@@ -9,7 +9,8 @@ use Trellis\Criteria\Features\GetFacebookCountriesFeature;
 use Trellis\Criteria\Features\GetFacebookGendersFeature;
 use Trellis\Criteria\Features\GetFacebookInterestsFeature;
 use Trellis\Criteria\Features\GetFacebookRegionsFeature;
-use Trellis\Criteria\Features\GetTrellisInterestsForFacebookFeature;
+use Trellis\Criteria\Features\GetTrellisInterestForFacebookFeature;
+use Trellis\Criteria\Features\ListTrellisInterestsForFacebookFeature;
 
 /**
  * @author Abed Halawi <abed.halawi@vinelab.com>
@@ -48,6 +49,11 @@ class FacebookController extends Controller
 
     public function trellisFacebookInterests()
     {
-        return $this->serve(GetTrellisInterestsForFacebookFeature::class);
+        return $this->serve(ListTrellisInterestsForFacebookFeature::class);
+    }
+
+    public function trellisFacebookInterest($interest)
+    {
+        return $this->serve(GetTrellisInterestForFacebookFeature::class, compact('interest'));
     }
 }

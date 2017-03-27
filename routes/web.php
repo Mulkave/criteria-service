@@ -23,3 +23,4 @@ Route::get('/criteria/facebook/interests', 'FacebookController@interests');
 Route::get('/criteria/facebook/age-groups', 'FacebookController@ageGroups');
 
 Route::get('/criteria/trellis/interests/facebook', 'FacebookController@trellisFacebookInterests');
+Route::get('/criteria/trellis/interests/{id}/facebook', 'FacebookController@trellisFacebookInterest');

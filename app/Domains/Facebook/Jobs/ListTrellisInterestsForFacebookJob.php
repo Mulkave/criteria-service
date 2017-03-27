@@ -8,7 +8,7 @@ use Lucid\Foundation\Job;
 /**
  * @author Charalampos Raftopoulos <harris@vinelab.com>
  */
-class GetTrellisInterestsForFacebookJob extends Job
+class ListTrellisInterestsForFacebookJob extends Job
 {
     /**
      * Execute the job.

@@ -3,17 +3,17 @@
 namespace Trellis\Criteria\Features;
 
 use Lucid\Foundation\Feature;
-use Trellis\Criteria\Domains\Facebook\Jobs\GetTrellisInterestsForFacebookJob;
+use Trellis\Criteria\Domains\Facebook\Jobs\ListTrellisInterestsForFacebookJob;
 use Trellis\Criteria\Domains\Http\Jobs\RespondWithJsonJob;
 
 /**
  * @author Charalampos Raftopoulos <harris@vinelab.com>
  */
-class GetTrellisInterestsForFacebookFeature extends Feature
+class ListTrellisInterestsForFacebookFeature extends Feature
 {
     public function handle()
     {
-        $interests = $this->run(GetTrellisInterestsForFacebookJob::class);
+        $interests = $this->run(ListTrellisInterestsForFacebookJob::class);
 
         return $this->run(new RespondWithJsonJob($interests));
     }
