@@ -21,3 +21,5 @@ Route::get('/criteria/facebook/regions', 'FacebookController@regions');
 Route::get('/criteria/facebook/countries', 'FacebookController@countries');
 Route::get('/criteria/facebook/interests', 'FacebookController@interests');
 Route::get('/criteria/facebook/age-groups', 'FacebookController@ageGroups');
+
+Route::get('/criteria/trellis/interests/facebook', 'FacebookController@trellisFacebookInterests');

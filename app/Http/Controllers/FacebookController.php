@@ -3,12 +3,13 @@
 namespace Trellis\Criteria\Http\Controllers;
 
 use Lucid\Foundation\Http\Controller;
-use Trellis\Criteria\Features\GetFacebookGendersFeature;
-use Trellis\Criteria\Features\GetFacebookRegionsFeature;
+use Trellis\Criteria\Features\GetAllFacebookCriteriaFeature;
 use Trellis\Criteria\Features\GetFacebookAgeGroupsFeature;
 use Trellis\Criteria\Features\GetFacebookCountriesFeature;
+use Trellis\Criteria\Features\GetFacebookGendersFeature;
 use Trellis\Criteria\Features\GetFacebookInterestsFeature;
-use Trellis\Criteria\Features\GetAllFacebookCriteriaFeature;
+use Trellis\Criteria\Features\GetFacebookRegionsFeature;
+use Trellis\Criteria\Features\GetTrellisInterestsForFacebookFeature;
 
 /**
  * @author Abed Halawi <abed.halawi@vinelab.com>
@@ -43,5 +44,10 @@ class FacebookController extends Controller
     public function ageGroups()
     {
         return $this->serve(GetFacebookAgeGroupsFeature::class);
+    }
+
+    public function trellisFacebookInterests()
+    {
+        return $this->serve(GetTrellisInterestsForFacebookFeature::class);
     }
 }

@@ -2,6 +2,53 @@
 
 return [
 
+    'trellis' => [
+        'facebook' => [
+            'interests' => [
+                [
+                    'id' => '6003263791114',
+                    'title' => 'Shopping',
+                ],
+                [
+                    'id' => '6003456388203_6003348604581',
+                    'title' => 'Fashion',
+                ],
+                [
+                    'id' => '6002867432822',
+                    'title' => 'Beauty',
+                ],
+                [
+                    'id' => '6003985771306',
+                    'title' => 'Technology',
+                ],
+                [
+                    'id' => '6004160395895',
+                    'title' => 'Travel',
+                ],
+                [
+                    'id' => '6003176678152',
+                    'title' => 'Automobiles',
+                ],
+                [
+                    'id' => '6003384248805',
+                    'title' => 'Fitness and Wellness',
+                ],
+                [
+                    'id' => '6008803895164',
+                    'title' => 'Sports and Outdoors',
+                ],
+                [
+                    'id' => '6012684376438',
+                    'title' => 'Family and Relationships',
+                ],
+                [
+                    'id' => '6009248606271',
+                    'title' => 'Food and Drink',
+                ],
+            ]
+        ],
+    ],
+
     'facebook' => [
 
         'interests' => [
