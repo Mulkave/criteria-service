@@ -22,8 +22,5 @@ Route::get('/criteria/facebook/countries', 'FacebookController@countries');
 Route::get('/criteria/facebook/interests', 'FacebookController@interests');
 Route::get('/criteria/facebook/age-groups', 'FacebookController@ageGroups');
 
-Route::get('/interests/facebook', 'FacebookController@trellisFacebookInterests');
-Route::get('/interests/{id}/facebook', 'FacebookController@trellisFacebookInterest');
-
-Route::get('/interests/instagram', 'InstagramController@all');
-Route::get('/interests/{id}/instagram', 'InstagramController@interests');
+Route::get('/interests', 'TrellisController@all');
+Route::get('/interests/{id}', 'TrellisController@show');

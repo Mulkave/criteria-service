@@ -12,12 +12,7 @@
 return [
 
     'trellis' => [
-        'facebook' => [
-            'interest_not_found' => 'This facebook interest was not found.'
-        ],
-        'instagram' => [
-            'interest_not_found' => 'This instagram interest was not found.'
-        ]
+        'interest_not_found' => 'This interest was not found.',
     ],
 
 ];
