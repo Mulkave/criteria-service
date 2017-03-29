@@ -6,46 +6,62 @@ return [
         'facebook' => [
             'interests' => [
                 [
-                    'id' => '6003263791114',
+                    'id' => '1c9e87a3-7537-43aa-b2c2-2dfad0e4f82a',
+                    'platform_id' => '6003263791114',
                     'title' => 'Shopping',
                 ],
                 [
-                    'id' => '6003456388203_6003348604581',
+                    'id' => 'dc1511d3-9059-4368-85a4-6a080cb2aaa1',
+                    'platform_id' => '6003456388203_6003348604581',
                     'title' => 'Fashion',
                 ],
                 [
-                    'id' => '6002867432822',
+                    'id' => 'f34efb49-4514-4c44-8d4a-dcc842cd6b3d',
+                    'platform_id' => '6002867432822',
                     'title' => 'Beauty',
                 ],
                 [
-                    'id' => '6003985771306',
+                    'id' => 'e7fbb705-fb20-4663-89c4-2ccfc158c4fb',
+                    'platform_id' => '6003985771306',
                     'title' => 'Technology',
                 ],
                 [
-                    'id' => '6004160395895',
+                    'id' => '613c88e7-7466-4563-85bb-b9c6255457c8',
+                    'platform_id' => '6004160395895',
                     'title' => 'Travel',
                 ],
                 [
-                    'id' => '6003176678152',
+                    'id' => 'b1b70c30-0d13-4940-9877-4298991dbf58',
+                    'platform_id' => '6003176678152',
                     'title' => 'Automobiles',
                 ],
                 [
-                    'id' => '6003384248805',
+                    'id' => '59e7c452-4f0d-46bf-9ef9-840444c6397e',
+                    'platform_id' => '6003384248805',
                     'title' => 'Fitness and Wellness',
                 ],
                 [
-                    'id' => '6008803895164',
+                    'id' => '0c126ef4-e497-4b05-8aaa-4a81aefc4c7e',
+                    'platform_id' => '6008803895164',
                     'title' => 'Sports and Outdoors',
                 ],
                 [
-                    'id' => '6012684376438',
+                    'id' => '56ca9849-939c-4272-a2fc-59a5368fe32c',
+                    'platform_id' => '6012684376438',
                     'title' => 'Family and Relationships',
                 ],
                 [
-                    'id' => '6009248606271',
+                    'id' => '7c836322-6cd9-4521-b947-ca59a2a5de1f',
+                    'platform_id' => '6009248606271',
                     'title' => 'Food and Drink',
                 ],
             ]
+        ],
+
+        'instagram' => [
+            'interests' => [
+
+            ],
         ],
     ],
 
