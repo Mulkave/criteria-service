@@ -25,17 +25,19 @@ class GetTrellisInterestForFacebookJob extends Job
         $interests = Config::get('criteria.trellis.facebook.interests');
 
         foreach ($interests as $interest) {
-            $finalInterests[$interest['title']] = $interest['id'];
+            $finalInterests[$interest['title']] = [
+                'id' => $interest['id'],
+                'platform_id' => $interest['platform_id'],
+            ];
         }
 
         $result = [
-            'value' => null,
+            'id' => null,
+            'platform_id' => null,
         ];
 
         if (array_key_exists($this->interest, $finalInterests)) {
-            $result = [
-                'value' => $finalInterests[$this->interest]
-            ];
+            $result = $finalInterests[$this->interest];
         }
 
         return $result;
