@@ -19,7 +19,7 @@ class GetTrellisInterestForFacebookFeature extends Feature
 
     public function handle(Request $request)
     {
-        $id = $this->run(GetTrellisInterestForFacebookJob::class, ['interest' => $this->interest]);
+        $id = $this->run(GetTrellisInterestForFacebookJob::class, ['interest' => array_filter(explode(',', $this->interest))]);
 
         if ($id) {
             $response = $this->run(new RespondWithJsonJob($id));

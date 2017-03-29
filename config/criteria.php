@@ -60,8 +60,84 @@ return [
 
         'instagram' => [
             'interests' => [
-
-            ],
+                [
+                    'id' => '1dcf47c1-e7fe-40b2-8f1f-dbf8c62dc898',
+                    'platform_id' => [
+                        'Shopping',
+                    ],
+                    'title' => 'Shopping',
+                ],
+                [
+                    'id' => 'd3a52127-22cb-4546-8b9d-98538b07c9a2',
+                    'platform_id' => [
+                        'Fashion',
+                    ],
+                    'title' => 'Fashion',
+                ],
+                [
+                    'id' => '74152ce5-3efe-4a16-844d-cbc1a5e47e7f',
+                    'platform_id' => [],
+                    'title' => 'Beauty',
+                ],
+                [
+                    'id' => '30f14a8f-c94a-4b8b-a545-19c10a37ea43',
+                    'platform_id' => [
+                        'Tech (strong interest)',
+                    ],
+                    'title' => 'Technology',
+                ],
+                [
+                    'id' => '3620722a-f273-49af-8979-6443d7ef8136',
+                    'platform_id' => [
+                        'Travel (general interest)',
+                    ],
+                    'title' => 'Travel',
+                ],
+                [
+                    'id' => '04544e7c-0236-4209-bff0-e285087ff79b',
+                    'platform_id' => [
+                        'Cars',
+                    ],
+                    'title' => 'Automobiles',
+                ],
+                [
+                    'id' => '8587effe-b719-4689-a32f-a1371c1da6e7',
+                    'platform_id' => [
+                        'Yoga',
+                        'Fitness (strong interest)',
+                    ],
+                    'title' => 'Fitness and Wellness',
+                ],
+                [
+                    'id' => 'e064f26d-4838-4286-a6f8-ea2f113b7fa4',
+                    'platform_id' => [
+                        'Outdoor life',
+                        'Sport (strong interest)',
+                    ],
+                    'title' => 'Sports and Outdoors',
+                ],
+                [
+                    'id' => '702efc80-b50c-4975-b148-fe40ccda92c5',
+                    'platform_id' => [
+                        'Dating/romance',
+                        'Family life',
+                    ],
+                    'title' => 'Family and Relationships',
+                ],
+                [
+                    'id' => '506cff1a-664a-4757-a6c4-900e86098ace',
+                    'platform_id' => [
+                        'Cooking',
+                        'Wine',
+                        'Cake/cookies',
+                        'Beer',
+                        'Tea',
+                        'Winning & dinning',
+                        'Coffee',
+                    ],
+                    'title' => 'Food and Drink',
+                ],
+            ]
         ],
     ],
 
