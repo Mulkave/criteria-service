@@ -32,7 +32,7 @@ class GetTrellisInterestJob extends Job
             foreach ($this->interest as $clientInterest) {
                 if ($interest['id'] == $clientInterest) {
                     $result[$interest['id']] = $platformInterests[$clientInterest];
-                    $result[$interest['id']]['title'] = $interest['title'];
+                    // $result[$interest['id']]['title'] = $interest['title'];
                 }
             }
         }
