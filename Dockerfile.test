@@ -1,0 +1,11 @@
+FROM vinelab/nginx-php
+
+MAINTAINER Abed Halawi <abed.halawi@vinelab.com>
+
+COPY . /code
+
+WORKDIR /code
+
+ADD run_tests.sh /code/run_tests.sh
+
+CMD ["bash", "run_tests.sh"]
