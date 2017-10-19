@@ -19,10 +19,8 @@
         "lucid-arch/laravel-console": "dev-dev"
     },
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:Trelllis/error-reporting.git"
-        }
+        {"type": "composer", "url": "https://repo.packagist.com/mulkorg/"},
+        {"packagist.org": false}
     ],
     "autoload": {
         "classmap": [
