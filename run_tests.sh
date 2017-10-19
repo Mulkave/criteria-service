@@ -7,7 +7,7 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 
 echo "=> Installing dependencies"
-composer install --prefer-dist --no-interaction
+./composer install --prefer-dist --no-interaction
 
 echo "=> running tests"
-phpunit
+/code/vendor/bin/phpunit
