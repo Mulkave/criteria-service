@@ -2,7 +2,7 @@ FROM vinelab/nginx-php
 
 MAINTAINER Abed Halawi <abed.halawi@vinelab.com>
 
-RUN apt-get install -y git
+RUN apt-get update && apt-get install -y git
 
 COPY . /code
 
