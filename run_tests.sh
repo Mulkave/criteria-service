@@ -9,8 +9,5 @@ php -r "unlink('composer-setup.php');"
 echo "=> Installing dependencies"
 php composer.phar install --prefer-dist --no-interaction
 
-echo "=> COMPOSER AUTH"
-echo $COMPOSER_AUTH
-
 echo "=> running tests"
 /code/vendor/bin/phpunit

@@ -3,3 +3,6 @@ sut:
   dockerfile: Dockerfile.test
   environment:
     - COMPOSER_AUTH
+    - APP_KEY
+    - APP_ENV
+    - APP_DEBUG
