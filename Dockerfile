@@ -22,6 +22,8 @@ RUN curl -s -f -L -o /tmp/installer.php https://raw.githubusercontent.com/compos
  && composer --ansi --version --no-interaction \
  && rm -rf /tmp/* /tmp/.htaccess
 
+RUN echo $COMPOSER_AUTH
+
 # Install dependencies
 RUN composer install --prefer-dist --no-interaction --no-dev
 
