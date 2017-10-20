@@ -31,7 +31,7 @@ ARG APP_KEY
 ENV COMPOSER_AUTH $COMPOSER_AUTH
 ENV APP_KEY $APP_KEY
 
-RUN php composer.phar install --prefer-dist --no-interaction
+RUN composer install --prefer-dist --no-interaction
 
 WORKDIR /code
 
