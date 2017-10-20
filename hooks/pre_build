@@ -6,7 +6,7 @@ ls
 
 echo "=> Installing composer"
 apt-get install -y curl php5-cli git
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer${WORKSPACE}
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 composer
 
 echo "=> Installing dependencies"
