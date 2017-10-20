@@ -1,0 +1,2 @@
+#!/bin/bash
+docker build --build-arg COMPOSER_AUTH=$COMPOSER_AUTH APP_KEY=$APP_KEY -t $IMAGE_NAME
