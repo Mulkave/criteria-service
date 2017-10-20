@@ -25,6 +25,12 @@ RUN curl -s -f -L -o /tmp/installer.php https://raw.githubusercontent.com/compos
 RUN echo $COMPOSER_AUTH
 
 # Install dependencies
+ARG COMPOSER_AUTH
+ARG APP_KEY
+
+ENV COMPOSER_AUTH $COMPOSER_AUTH
+ENV APP_KEY $APP_KEY
+
 RUN composer install --prefer-dist --no-interaction --no-dev
 
 WORKDIR /code
