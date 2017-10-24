@@ -1,11 +1,7 @@
 #!/bin/bash
 
-pwd
-
-ls
-
 echo "=> Installing composer"
-apt-get install -y curl php5-cli git
+apt-get install -y curl php7-cli git
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 composer
 
