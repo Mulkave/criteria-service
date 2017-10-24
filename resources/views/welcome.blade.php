@@ -75,7 +75,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Criteria Service
+                    Criteria Service - You are welcome!
                 </div>
             </div>
         </div>
