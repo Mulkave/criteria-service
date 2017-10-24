@@ -1,13 +1,8 @@
 #!/bin/bash
 
-echo "=> Installing composer"
-apt-get install -y curl php7-cli git
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-composer
-
-echo "=> Installing dependencies"
-composer install --prefer-dist --no-interaction --no-dev
-
-echo "=> opening storage directories"
-chmod -R o+w ./storage
-chmod -R o+w ./bootstrap/cache
+docker run --rm \
+    -v $(pwd):/code \
+    --workdir /code \
+    -e COMPOSER_AUTH=$COMPOSER_AUTH \
+    vinelab/nginx-php:composer \
+    /bin/bash -c "composer self-update && composer install --no-dev --no-interaction"
