@@ -3,7 +3,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'run'
-      - '-v /workspace:/code'
       - 'vinelab/nginx-php:composer'
       - '/bin/bash -c "composer self-update && composer install --no-interaction"'
     env:
