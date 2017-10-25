@@ -8,6 +8,7 @@ steps:
     entrypoint: ['/usr/local/bin/composer', 'install', '--no-interaction']
     env:
       - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
+  # build code image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME', '.']
 
