@@ -2,9 +2,9 @@ steps:
   # install dependencies with dev
   - name: 'gcr.io/cloud-builders/docker'
     args:
+      - '/bin/bash -c composer self-update && composer install --no-interaction'
       - 'run'
       - 'vinelab/nginx-php:composer'
-    entrypoint: ['/bin/bash', '-c', '"composer self-update && composer install --no-interaction"']
     env:
       - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
   - name: 'gcr.io/cloud-builders/docker'
