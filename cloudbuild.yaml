@@ -4,6 +4,7 @@ steps:
     args:
       - 'run'
       - 'vinelab/nginx-php:composer'
+      - '--workdir /workspace'
       - '/usr/local/bin/composer'
       - 'install'
       - '--no-interaction'
