@@ -4,7 +4,6 @@ steps:
     args:
       - 'run'
       - '-v $(pwd):/code'
-      - '--workdir /code'
       - 'vinelab/nginx-php:composer'
       - '/bin/bash -c "composer self-update && composer install --no-interaction"'
     env:
