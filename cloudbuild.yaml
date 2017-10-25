@@ -5,10 +5,7 @@ steps:
       - 'run'
       - 'vinelab/nginx-php:composer'
       - '--workdir /workspace'
-      - '/usr/local/bin/composer'
-      - 'install'
-      - '--no-interaction'
-      - '-d /workspace'
+    entrypoint: ['/usr/local/bin/composer', 'install', '--no-interaction']
     env:
       - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
   - name: 'gcr.io/cloud-builders/docker'
