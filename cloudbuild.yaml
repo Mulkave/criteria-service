@@ -5,6 +5,10 @@ steps:
     entrypoint: '/bin/bash'
     env:
       - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
+  # open storage directories for writing
+  - name: 'debian'
+    entrypoint: 'bash'
+    args: ['-c', 'chmod -R o+w ./storage ./bootstrap/cache']
   # build code image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME', '.']
