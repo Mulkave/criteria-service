@@ -4,9 +4,10 @@ steps:
     args:
       - 'run'
       - 'vinelab/nginx-php:composer'
-      - '/bin/bash'
-      - '-c'
-      - '"composer self-update && composer install --no-interaction"'
+      - '/usr/local/bin/composer'
+      - 'self-update'
+      - '&&'
+      - '/usr/local/bin/composer install --no-interaction"'
     env:
       - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
   - name: 'gcr.io/cloud-builders/docker'
