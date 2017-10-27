@@ -16,8 +16,8 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$COMMIT_SHA"]
     env:
-      - 'CLOUDSDK_COMPUTE_ZONE=$CLOUDSDK_COMPUTE_ZONE'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=$CLOUDSDK_CONTAINER_CLUSTER'
+      - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
   # re-deploy pod
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['set', 'image', 'deployment/criteria-service', 'criteria-service=gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$COMMIT_SHA']
