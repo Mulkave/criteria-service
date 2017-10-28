@@ -76,7 +76,7 @@
             <div class="content">
                 <div class="title m-b-md">
                     Criteria Service - Welcomes <b>k8s</b>! <br />
-                    <?php env('AWS_CLOUDWATCH_KEY') ?>
+                    <?php echo env('AWS_CLOUDWATCH_KEY') ?>
                 </div>
             </div>
         </div>
