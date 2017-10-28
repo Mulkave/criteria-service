@@ -9,18 +9,33 @@ steps:
   - name: 'debian'
     entrypoint: 'bash'
     args: ['-c', 'chmod -R o+w ./storage ./bootstrap/cache']
-  # build code image
+  # run tests
+  - name: 'vinelab/nginx-php'
+    args: ['-c', './vendor/bin/phpunit']
+    entrypoint: '/bin/bash'
+    env:
+      - 'APP_KEY=$_APP_KEY'
+  # remove dev dependencies
+  - name: 'vinelab/nginx-php:composer'
+    args: ['-c', '/usr/local/bin/composer install --no-dev --no-interaction']
+    entrypoint: '/bin/bash'
+    env:
+      - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
+  # build deployable code image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA', '.']
+    # args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME', '.']
   # push code image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA"]
+    # args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA"]
+    args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME"]
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
       - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
-  # re-deploy pod
+  # update pod
   - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['set', 'image', 'deployment/criteria-service', 'criteria-service=gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA']
+    # args: ['set', 'image', 'deployment/criteria-service', 'criteria-service=gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA']
+    args: ['set', 'image', 'deployment/criteria-service', '--image-pull-policy', 'Always', 'criteria-service=gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
       - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
