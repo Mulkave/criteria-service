@@ -35,7 +35,8 @@ steps:
   # update pod
   - name: 'gcr.io/cloud-builders/kubectl'
     # args: ['set', 'image', 'deployment/criteria-service', 'criteria-service=gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA  ']
-    args: ['set', 'image', 'deployment/criteria-service', 'criteria-service=gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME']
+    # args: ['set', 'image', 'deployment/criteria-service', 'criteria-service=gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME']
+    args: ['rolling-update', 'criteria-service', '--image==gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME', '--image-pull-policy', 'Always']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
       - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
