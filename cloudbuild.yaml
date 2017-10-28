@@ -42,7 +42,7 @@ steps:
   # trick to force-deploy pods
   - name: 'gcr.io/cloud-builders/kubectl'
     # args: ['set', 'image', 'deployment/criteria-service', 'criteria-service=gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA  ']
-    args: ['patch', 'deployment', 'criteria', "'{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"build\":\"$BUILD_ID\"}}}}}'"]
+    args: ['patch', 'deployment', 'criteria', '-p', '"{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"build\":\"$BUILD_ID\"}}}}}"']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
       - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
