@@ -1,4 +1,8 @@
 steps:
+  # prerequisites
+  - name: 'redis'
+    args: ['-p','6379:6379', '--name', 'redis']
+    waitFor: ['-']
   # install dependencies with dev
   - name: 'vinelab/nginx-php:composer'
     args: ['-c', '/usr/local/bin/composer install --no-interaction']
@@ -11,7 +15,7 @@ steps:
     args: ['-c', 'chmod -R o+w ./storage ./bootstrap/cache']
   # run tests
   - name: 'vinelab/nginx-php'
-    args: ['-c', './vendor/bin/phpunit']
+    args: ['--link', 'redis', '-c', './vendor/bin/phpunit']
     entrypoint: '/bin/bash'
     env:
       - 'APP_KEY=$_APP_KEY'
