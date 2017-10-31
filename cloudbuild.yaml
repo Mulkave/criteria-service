@@ -14,8 +14,8 @@ steps:
     entrypoint: 'bash'
     args: ['-c', 'chmod -R o+w ./storage ./bootstrap/cache']
   # run tests
-  - name: 'vinelab/nginx-php'
-    args: ['--link', 'redis', '-c', './vendor/bin/phpunit']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', '--link', 'redis', 'vinelab/nginx-php', '/bin/bash', '-c', './vendor/bin/phpunit']
     entrypoint: '/bin/bash'
     env:
       - 'APP_KEY=$_APP_KEY'
