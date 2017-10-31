@@ -1,7 +1,7 @@
 steps:
   # prerequisites
   - name: 'redis'
-    args: ['-p','6379:6379', '--name', 'redis']
+    args: ['--name', 'redis']
     waitFor: ['-']
   # install dependencies with dev
   - name: 'vinelab/nginx-php:composer'
