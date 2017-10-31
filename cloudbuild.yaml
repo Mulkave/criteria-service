@@ -1,7 +1,7 @@
 steps:
   # prerequisites
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['run', '-d', '--name', 'redis', 'redis']
+    args: ['run', '-d', '-p', '6379:6379', '--name', 'redis', 'redis']
     waitFor: ['-']
   # install dependencies with dev
   - name: 'vinelab/nginx-php:composer'
@@ -14,8 +14,9 @@ steps:
     entrypoint: 'bash'
     args: ['-c', 'chmod -R o+w ./storage ./bootstrap/cache']
   # run tests
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['run', '--link', 'redis', 'vinelab/nginx-php', '/workspace/vendor/bin/phpunit']
+  - name: 'vinelab/nginx-php'
+    args: ['-c', './vendor/bin/phpunit']
+    entrypoint: '/bin/bash'
     env:
       - 'APP_KEY=$_APP_KEY'
   # remove dev dependencies
