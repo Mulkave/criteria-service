@@ -15,5 +15,7 @@ class ExampleTest extends TestCase
     {
         $this->visit('/')
              ->see('Criteria Service');
+
+        print_r(Redis::info());
     }
 }
