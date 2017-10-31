@@ -15,7 +15,7 @@ steps:
     args: ['-c', 'chmod -R o+w ./storage ./bootstrap/cache']
   # run tests
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['run', '--link', 'redis', 'vinelab/nginx-php', '/bin/bash', '-c', './vendor/bin/phpunit']
+    args: ['run', '--link', 'redis', 'vinelab/nginx-php', '/workspace/vendor/bin/phpunit']
     env:
       - 'APP_KEY=$_APP_KEY'
   # remove dev dependencies
