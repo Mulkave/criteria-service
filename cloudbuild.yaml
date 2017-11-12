@@ -19,6 +19,7 @@ steps:
     entrypoint: '/bin/bash'
     env:
       - 'APP_KEY=$_APP_KEY'
+      - 'REDIS_HOST=$_REDIS_HOST'
   # remove dev dependencies
   - name: 'vinelab/nginx-php:composer'
     args: ['-c', '/usr/local/bin/composer install --no-dev --no-interaction']
