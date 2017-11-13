@@ -29,8 +29,7 @@ steps:
     args:
     - '-c'
     - |
-      chmod 600
-      mv id_rsa /root/.ssh/id_rsa
+      chmod 600 /root/.ssh/id_rsa
       cat <<EOF >/root/.ssh/config
       Hostname github.com
       IdentityFile /root/.ssh/id_rsa
