@@ -43,7 +43,7 @@ steps:
   - name: 'gcr.io/cloud-builders/git'
     args:
     - clone
-    - git@github.com:[GIT-USERNAME]/[REPOSITORY]
+    - git@github.com:trelllis/error-reporting.git
     volumes:
     - name: 'ssh'
       path: /root/.ssh
