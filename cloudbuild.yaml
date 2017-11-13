@@ -42,7 +42,7 @@ steps:
 
   # install dependencies
   - name: 'vinelab/nginx-php:composer'
-    args: ['-c', '/usr/local/bin/composer install --no-interaction']
+    args: ['-c', '/usr/local/bin/composer install --no-interaction --prefer-dist']
     entrypoint: '/bin/bash'
     volumes:
     - name: 'ssh'
@@ -61,10 +61,11 @@ steps:
       - 'REDIS_HOST=$_REDIS_HOST'
   # remove dev dependencies
   - name: 'vinelab/nginx-php:composer'
-    args: ['-c', '/usr/local/bin/composer install --no-dev --no-interaction']
+    args: ['-c', '/usr/local/bin/composer install --no-dev --no-interaction --prefer-dist']
     entrypoint: '/bin/bash'
-    env:
-      - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
   # build deployable code image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA', '.']
