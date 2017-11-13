@@ -11,6 +11,9 @@ steps:
   #     - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
   - name: 'gcr.io/cloud-builders/gsutil'
     args: ['cp', 'gs://evalu8-ci/id_rsa.enc', '/root/.ssh/id_rsa.enc']
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
 
   # setup ssh access
   ## decrypt ssh key to access private repositories
