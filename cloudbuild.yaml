@@ -40,6 +40,14 @@ steps:
     - name: 'ssh'
       path: /root/.ssh
 
+  # try cloning before getting to deps
+  - name: 'gcr.io/cloud-builders/git'
+    args:
+    - clone
+    - git@github.com:[GIT-USERNAME]/[REPOSITORY]
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
   # install dependencies
   - name: 'vinelab/nginx-php:composer'
     args: ['-c', '/usr/local/bin/composer install --no-interaction --prefer-dist']
