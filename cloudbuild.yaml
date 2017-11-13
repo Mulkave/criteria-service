@@ -78,7 +78,7 @@ steps:
       - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
   # update deployment template
   - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['set', 'image', 'deployment/criteria', '--namespace', '$_K8S_NAMESPACE', 'criteria=gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA']
+    args: ['set', 'image', 'deployment/criteria', 'criteria=gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA']
     # args: ['set', 'image', 'deployment/criteria', 'criteria=gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
