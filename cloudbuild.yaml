@@ -9,6 +9,8 @@ steps:
   #   entrypoint: '/bin/bash'
   #   env:
   #     - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', 'gs://evalu8-ci/id_rsa.enc', '/root/.ssh/id_rsa.enc']
 
   # setup ssh access
   ## decrypt ssh key to access private repositories
@@ -16,7 +18,7 @@ steps:
     args:
     - kms
     - decrypt
-    - --ciphertext-file=id_rsa.enc
+    - --ciphertext-file=/root/.ssh/id_rsa.enc
     - --plaintext-file=/root/.ssh/id_rsa
     - --location=global
     - --keyring=cloud-builder
@@ -38,15 +40,6 @@ steps:
     volumes:
     - name: 'ssh'
       path: /root/.ssh
-
-  # try cloning before getting to deps
-  - name: 'gcr.io/cloud-builders/git'
-    args:
-    - clone
-    - git@github.com:trelllis/error-reporting.git
-    volumes:
-    - name: 'ssh'
-      path: /root/.ssh
   # install dependencies
   - name: 'vinelab/nginx-php:composer'
     args: ['-c', '/usr/local/bin/composer install --no-interaction --prefer-dist']
@@ -54,7 +47,6 @@ steps:
     volumes:
     - name: 'ssh'
       path: /root/.ssh
-
   # open cache and storage directories for writing
   - name: 'debian'
     entrypoint: 'bash'
