@@ -62,8 +62,6 @@ steps:
   - name: 'vinelab/nginx-php:composer'
     args: ['-c', '/usr/local/bin/composer install --no-dev --no-interaction --prefer-dist']
     entrypoint: '/bin/bash'
-    env:
-      - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
     volumes:
     - name: 'ssh'
       path: /root/.ssh
