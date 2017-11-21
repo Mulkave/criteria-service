@@ -14,6 +14,8 @@ class ExampleTest extends TestCase
     public function testBasicExample()
     {
         $this->visit('/')
-             ->see('Laravel');
+             ->see('Criteria Service');
+
+        print_r(Redis::info());
     }
 }

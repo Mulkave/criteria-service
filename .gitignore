@@ -5,3 +5,6 @@
 Homestead.json
 Homestead.yaml
 .env
+id_rsa.pub
+id_rsa
+dckey*

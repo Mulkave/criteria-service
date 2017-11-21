@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "=> Installing dependencies"
+docker run --rm \
+    -v $(pwd):/code \
+    --workdir /code \
+    -e COMPOSER_AUTH=$COMPOSER_AUTH \
+    vinelab/nginx-php:composer \
+    /bin/bash -c "composer self-update && composer install --no-dev --no-interaction"
+
+echo "=> opening storage directories"        echo "=> opening storage directories"
+chmod -R o+w ./storage
+chmod -R o+w ./bootstrap/cache

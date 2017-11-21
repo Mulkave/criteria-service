@@ -1,3 +1,42 @@
+# Trellis • Criteria Service
+
+This service exposes the pre-defined criteria to be use to fetch data based upon.
+
+**Namespace:** `Trellis\Criteria`
+
+## Requirements
+- PHP >= 5.6.4
+- OpenSSL PHP Extension
+- Mbstring PHP Extension
+- PDO PHP Extension
+- Tokenizer PHP Extension
+- XML PHP Extension
+
+## Installation
+- `git clone` this repo
+- `cd criteria-service`
+- `composer install`
+
+## Configuration
+- Create a .env file at the root of the project by copying .env.example
+- Update .env with the corresponding values
+
+## Usage
+### HTTP
+*Documentation to be posted soon*
+
+## Development
+To setup this project for development
+
+- `composer install` should automatically install all dev dependencies
+- `phpunit` to run the tests
+
+## License
+(c) Vinelab 2016 dev@vinelab.com
+For the full copyright and license information, please view the LICENSE file that was distributed with this source code.
+
+---------
+
 # Lucid • Microservice - Laravel
 
 With the emerging need for separation per concern, microservices emerged to be the trending progression

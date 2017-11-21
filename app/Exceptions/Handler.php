@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace Trellis\Criteria\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

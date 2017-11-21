@@ -30,9 +30,27 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
+        'model' => Trellis\Criteria\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+
+    'slack' => [
+        'token' => env('SLACK_TOKEN'),
+    ],
+
+    'aws' => [
+
+        'cloudwatch' => [
+            'region' => env('AWS_CLOUDWATCH_REGION'),
+            'version' => env('AWS_CLOUDWATCH_VERSION', 'latest'),
+            'credentials' => [
+                'key' => env('AWS_CLOUDWATCH_KEY'),
+                'secret' => env('AWS_CLOUDWATCH_SECRET'),
+            ],
+        ],
+
+    ],
+
 
 ];

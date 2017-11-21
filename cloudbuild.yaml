@@ -1,0 +1,95 @@
+steps:
+  # prerequisites
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', '-d', '-p', '6379:6379', '--name', 'redis', 'redis']
+    waitFor: ['-']
+  # install dependencies with dev using packagist.com
+  # - name: 'vinelab/nginx-php:composer'
+  #   args: ['-c', '/usr/local/bin/composer install --no-interaction']
+  #   entrypoint: '/bin/bash'
+  #   env:
+  #     - 'COMPOSER_AUTH=$_COMPOSER_AUTH'
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', 'gs://evalu8-ci/id_rsa.enc', '/root/.ssh/id_rsa.enc']
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+
+  # setup ssh access
+  ## decrypt ssh key to access private repositories
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+    - kms
+    - decrypt
+    - --ciphertext-file=/root/.ssh/id_rsa.enc
+    - --plaintext-file=/root/.ssh/id_rsa
+    - --location=global
+    - --keyring=cloud-builder
+    - --key=vinelabot-github-ssh-key
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      chmod 600 /root/.ssh/id_rsa
+      cat <<EOF >/root/.ssh/config
+      Hostname github.com
+      IdentityFile /root/.ssh/id_rsa
+      EOF
+      echo $_GITHUB_KNOWN_HOSTS > /root/.ssh/known_hosts
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+  # install dependencies
+  - name: 'vinelab/nginx-php:composer'
+    args: ['-c', '/usr/local/bin/composer install --no-interaction --prefer-dist']
+    entrypoint: '/bin/bash'
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+  # open cache and storage directories for writing
+  - name: 'debian'
+    entrypoint: 'bash'
+    args: ['-c', 'chmod -R o+w ./storage ./bootstrap/cache']
+  # run tests
+  - name: 'vinelab/nginx-php'
+    args: ['-c', './vendor/bin/phpunit']
+    entrypoint: '/bin/bash'
+    env:
+      - 'APP_KEY=$_APP_KEY'
+      - 'REDIS_HOST=$_REDIS_HOST'
+  # remove dev dependencies
+  - name: 'vinelab/nginx-php:composer'
+    args: ['-c', '/usr/local/bin/composer install --no-dev --no-interaction --prefer-dist']
+    entrypoint: '/bin/bash'
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+  # build deployable code image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA', '.']
+    # args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME', '.']
+  # push code image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA"]
+    # args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME"]
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
+  # update deployment template
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['set', 'image', 'deployment/criteria', 'criteria=gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID.$SHORT_SHA']
+    # args: ['set', 'image', 'deployment/criteria', 'criteria=gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME']
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
+  # trick to force-deploy pods
+  # - name: 'gcr.io/cloud-builders/kubectl'
+  #   args: ['patch', 'deployment', 'criteria', '-p', '"{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"build\":\"$BUILD_ID\"}}}}}"']
+  #   env:
+  #     - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
+  #     - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
+
